@@ -60,11 +60,11 @@ class App
      */
     private function getPatternRoutes($routes) {
         $patternRoutes = [];
-        foreach ($routes as $index => $route) {
-            $newIndex = str_replace('/', '\/', $index);
-            $newIndex = str_replace('{id}', '(\d+)', $newIndex);
-            $newIndex = "/^{$newIndex}$/";
-            $patternRoutes[$newIndex] = $route;
+        foreach ($routes as $route => $resolved) {
+            $patternRoute = str_replace('/', '\/', $route);
+            $patternRoute = str_replace('{id}', '(\d+)', $patternRoute);
+            $patternRoute = "/^{$patternRoute}$/";
+            $patternRoutes[$patternRoute] = $resolved;
         }
 
         return $patternRoutes;
