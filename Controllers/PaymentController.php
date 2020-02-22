@@ -1,7 +1,7 @@
 <?php
 namespace Controllers;
 
-use Requests\BaseRequest;
+use Requests\PaymentValidateRequest;
 
 /**
  * Created by PhpStorm.
@@ -12,24 +12,24 @@ use Requests\BaseRequest;
 
 class PaymentController extends Controller
 {
-    /** @var BaseRequest $request */
-    private $request;
-
     /**
      * PaymentController constructor.
-     * @param BaseRequest $request
      * @throws \Exception
      */
-    public function __construct(BaseRequest $request)
+    public function __construct()
     {
         parent::__construct();
-        $this->request = $request;
     }
 
-    public function validate() {
-        $data = $this->request->all();
+    public function validate(PaymentValidateRequest $request) {
+        $data = $request->all();
+
+        $errors = $request->validate();
+        if (count($errors) > 0) {
+            echo $this->response->toJson($errors, 400);
+            die();
+        }
 
         echo $this->response->toJson($data);
-        die();
     }
 }

@@ -10,8 +10,9 @@ namespace Requests;
 
 use Exception;
 use Exceptions\MethodNotAllowed;
+use Rules\Rule;
 
-class BaseRequest implements IRequest
+abstract class BaseRequest implements IRequest
 {
     /**
      * Only support
@@ -40,12 +41,42 @@ class BaseRequest implements IRequest
         return in_array($_SERVER['REQUEST_METHOD'], self::SUPPORT_METHODS);
     }
 
+    public abstract function rules();
+
+    /**
+     * @return array
+     */
+    public function validate() {
+        $errors = [];
+        $data = $this->all();
+        $validations = $this->rules() ?? [];
+
+        foreach ($data as $key => $value) {
+            if (!array_key_exists($key, $validations)) {
+                continue;
+            }
+
+            $rules = $validations[$key];
+            foreach ($rules as $rule) {
+                /** @var Rule $ruleInstance */
+                $ruleInstance = new $rule($key, $value);
+                $isValid = $ruleInstance->isValid();
+                if (!$isValid) {
+                    $errors[$key][] = $ruleInstance->message();
+                }
+            }
+
+        }
+
+        return $errors;
+    }
+
     /**
      * Retrieve all of input data
      *
      * @return mixed
      */
-    function all()
+    public function all()
     {
         $data = [];
         if ($_SERVER['REQUEST_METHOD'] === self::POST) {
@@ -55,29 +86,5 @@ class BaseRequest implements IRequest
         }
 
         return $data;
-    }
-
-    /**
-     * get body data by name
-     *
-     * @param $name
-     * @param null $default
-     * @return mixed
-     */
-    function input($name, $default = null)
-    {
-        // TODO: Implement input() method.
-    }
-
-    /**
-     * get query data by name
-     *
-     * @param $name
-     * @param null $default
-     * @return mixed
-     */
-    function query($name, $default = null)
-    {
-        // TODO: Implement query() method.
     }
 }

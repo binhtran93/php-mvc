@@ -7,7 +7,6 @@
  */
 namespace Controllers;
 
-use Requests\BaseRequest;
 use Responses\BaseResponse;
 
 class Controller
