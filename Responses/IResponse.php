@@ -10,9 +10,9 @@ namespace Responses;
 
 interface IResponse
 {
-    function code($code);
-
     function toJson($data);
 
     function toXml($data);
+
+    function from($data);
 }

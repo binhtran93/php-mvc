@@ -1,7 +1,7 @@
 <?php
 namespace Controllers;
 
-use Requests\PaymentValidateRequest;
+use Requests\PaymentValidationRequest;
 
 /**
  * Created by PhpStorm.
@@ -21,7 +21,7 @@ class PaymentController extends Controller
         parent::__construct();
     }
 
-    public function validate(PaymentValidateRequest $request) {
+    public function validate(PaymentValidationRequest $request) {
         $data = $request->all();
 
         $errors = $request->validate();
@@ -30,6 +30,6 @@ class PaymentController extends Controller
             die();
         }
 
-        echo $this->response->toJson($data);
+        echo $this->response->from($data);
     }
 }

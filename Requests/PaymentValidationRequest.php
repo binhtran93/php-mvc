@@ -11,7 +11,7 @@ namespace Requests;
 
 use Rules\Required;
 
-class PaymentValidateRequest extends BaseRequest
+class PaymentValidationRequest extends BaseRequest
 {
     public function rules()
     {
