@@ -6,10 +6,9 @@
  * Time: 23:16
  */
 require "autoload.php";
+require "DI.php";
 
-$uri = $_SERVER['PATH_INFO'];
-
-
+$pathInfo = $_SERVER['PATH_INFO'];
 
 $routes = [
     '/payments/validate' => 'Controllers\PaymentController@validate',
@@ -26,7 +25,7 @@ foreach ($routes as $index => $route) {
 $parameters = null;
 $route = null;
 foreach ( $convertedRoutes as $index => $convertedRoute) {
-    $isMatch = preg_match($index, $uri, $matches);
+    $isMatch = preg_match($index, $pathInfo, $matches);
     if ($isMatch) {
         $parameters = array_slice($matches, 1);
         $route = $convertedRoute;
@@ -42,8 +41,9 @@ if (is_null($route)) {
 [$controller, $action] = explode('@', $route);
 
 try {
+    $di = new DI();
     if (class_exists($controller)) {
-        $ctlInstance = new $controller();
+        $ctlInstance = $di->make($controller);
 
         if (method_exists($ctlInstance, $action)) {
             $ctlInstance->{$action}(...$parameters);

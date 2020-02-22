@@ -12,13 +12,24 @@ use Requests\BaseRequest;
 
 class PaymentController extends Controller
 {
-    public function index() {
+    /** @var BaseRequest $request */
+    private $request;
 
+    /**
+     * PaymentController constructor.
+     * @param BaseRequest $request
+     * @throws \Exception
+     */
+    public function __construct(BaseRequest $request)
+    {
+        parent::__construct();
+        $this->request = $request;
     }
 
-    public function validate(BaseRequest $request) {
+    public function validate() {
         $data = $this->request->all();
 
-        return $this->response->toJson($data);
+        echo $this->response->toJson($data);
+        die();
     }
 }

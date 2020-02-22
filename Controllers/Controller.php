@@ -12,9 +12,6 @@ use Responses\BaseResponse;
 
 class Controller
 {
-    /** @var BaseRequest $request */
-    protected $request;
-
     /** @var BaseResponse $response */
     protected $response;
 
@@ -24,7 +21,6 @@ class Controller
      */
     public function __construct()
     {
-        $this->request = new BaseRequest();
         $this->response = new BaseResponse();
     }
 }
