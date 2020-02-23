@@ -75,15 +75,48 @@ abstract class BaseRequest implements IRequest
      *
      * @return mixed
      */
-    public function all()
-    {
-        $data = [];
+    public function all() {
+        $params = [];
         if ($_SERVER['REQUEST_METHOD'] === self::POST) {
-            foreach ($_POST as $key => $value) {
-                $data[$key] = $value;
+            if ($_SERVER['CONTENT_TYPE'] === 'application/json') {
+                $data = $this->parseJson();
+            } else if ($_SERVER['CONTENT_TYPE'] === 'application/xml') {
+                $data = $this->parseXml();
+            } else {
+                $data = $_POST;
+            }
+
+            foreach ($data as $key => $value) {
+                $params[$key] = $value;
             }
         }
 
+        return $params;
+    }
+
+    /**
+     * @return array|mixed
+     */
+    private function parseJson() {
+        try {
+            $data = json_decode(file_get_contents('php://input'));
+        } catch (\Throwable $t) {
+            $data = [];
+        }
+        return $data;
+    }
+
+    /**
+     * @return array|mixed
+     */
+    private function parseXml() {
+        try {
+            $xml = simplexml_load_string(file_get_contents('php://input'), "SimpleXMLElement", LIBXML_NOCDATA);
+            $json = json_encode($xml);
+            $data = json_decode($json,TRUE);
+        } catch (\Throwable $t) {
+            $data = [];
+        }
         return $data;
     }
 }

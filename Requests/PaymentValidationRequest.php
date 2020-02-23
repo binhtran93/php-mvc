@@ -31,7 +31,7 @@ class PaymentValidationRequest extends BaseRequest {
             ],
             'ccv2' => [
                 'Rules\RequiredIf' => ['type', Payment::TYPE_CREDIT_CARD],
-                "Rules\Regex" => ['/^\d{3,4}$/']
+                "Rules\Regex" => ['/^\d{3,4}$/'] // regex check 3 or 4 digit
             ],
             'email' => [
                 'Rules\RequiredIf' => ['type', Payment::TYPE_CREDIT_CARD],

@@ -18,6 +18,10 @@ class Regex extends Rule
      */
     public function isValid()
     {
+        if ($this->value === null) {
+            return true;
+        }
+
         $pattern = $this->args[0];
         return preg_match($pattern, $this->value);
     }

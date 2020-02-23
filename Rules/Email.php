@@ -17,6 +17,10 @@ class Email extends Rule {
      */
     public function isValid()
     {
+        if ($this->value === null) {
+            return true;
+        }
+
         $email = filter_var($this->value, FILTER_SANITIZE_EMAIL);
         return filter_var($email, FILTER_VALIDATE_EMAIL);
     }
