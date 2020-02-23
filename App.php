@@ -37,7 +37,7 @@ class App {
                 throw new \Exception("Controller not found");
             }
 
-            // call the action
+            // call the action using dependency injection
             $di = new DI();
             $di->call($controller, $action, [], $parameters);
 

@@ -12,6 +12,7 @@ use Requests\PaymentValidationRequest;
  */
 
 class PaymentController extends Controller {
+
     /** @var Payment $payment */
     private $payment;
     /**
