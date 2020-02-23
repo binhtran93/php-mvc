@@ -20,7 +20,7 @@ class Authenticate implements IMiddleware {
         preg_match('/Bearer\s(\S+)/', $authorization, $matches);
 
         $token = $matches[1] ?? null;
-        if ($token === null) {
+        if (is_null($token)) {
             return false;
         }
 

@@ -17,7 +17,7 @@ class Email extends Rule {
      */
     public function isValid()
     {
-        if ($this->value === null) {
+        if (is_null($this->value)) {
             return true;
         }
 

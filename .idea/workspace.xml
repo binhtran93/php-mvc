@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fe0f3bb8-8c2a-483f-86b8-202b60660d24" name="Default Changelist" comment="add xml parse">
+    <list default="true" id="fe0f3bb8-8c2a-483f-86b8-202b60660d24" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/Controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/PaymentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/PaymentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Requests/BaseRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/Requests/BaseRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Requests/PaymentValidationRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/Requests/PaymentValidationRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Responses/BaseResponse.php" beforeDir="false" afterPath="$PROJECT_DIR$/Responses/BaseResponse.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Rules/CreditCardNumber.php" beforeDir="false" afterPath="$PROJECT_DIR$/Rules/CreditCardNumber.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App.php" beforeDir="false" afterPath="$PROJECT_DIR$/App.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Middleware/Authenticate.php" beforeDir="false" afterPath="$PROJECT_DIR$/Middleware/Authenticate.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rules/Date.php" beforeDir="false" afterPath="$PROJECT_DIR$/Rules/Date.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Rules/Email.php" beforeDir="false" afterPath="$PROJECT_DIR$/Rules/Email.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Rules/ExpiredDate.php" beforeDir="false" afterPath="$PROJECT_DIR$/Rules/ExpiredDate.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Rules/Regex.php" beforeDir="false" afterPath="$PROJECT_DIR$/Rules/Regex.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rules/RequiredIf.php" beforeDir="false" afterPath="$PROJECT_DIR$/Rules/RequiredIf.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,11 +19,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="19" column="31" lean-forward="true" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
+            <state relative-caret-position="315">
+              <caret line="15" column="23" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -34,7 +32,7 @@
         <entry file="file://$PROJECT_DIR$/App.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="987">
-              <caret line="52" column="56" lean-forward="true" selection-start-line="52" selection-start-column="56" selection-end-line="52" selection-end-column="56" />
+              <caret line="52" column="59" lean-forward="true" selection-start-line="52" selection-start-column="59" selection-end-line="52" selection-end-column="59" />
             </state>
           </provider>
         </entry>
@@ -43,7 +41,55 @@
         <entry file="file://$PROJECT_DIR$/Middleware/Authenticate.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="357">
-              <caret line="23" column="22" lean-forward="true" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
+              <caret line="22" column="26" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
+              <folding>
+                <element signature="e#110#138#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Rules/RequiredIf.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="399">
+              <caret line="24" column="36" selection-start-line="24" selection-start-column="36" selection-end-line="24" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Rules/ExpiredDate.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="21" column="32" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Rules/Date.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="608">
+              <caret line="54" column="36" selection-start-line="54" selection-start-column="36" selection-end-line="54" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Rules/Regex.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="20" column="32" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Rules/Email.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="294">
+              <caret line="19" column="32" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -57,10 +103,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Requests/BaseRequest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
+            <state relative-caret-position="1473">
               <caret line="83" column="39" selection-start-line="83" selection-start-column="39" selection-end-line="83" selection-end-column="39" />
               <folding>
                 <element signature="e#109#123#0#PHP" expanded="true" />
@@ -75,6 +121,7 @@
     <findStrings>
       <find>10000000</find>
       <find>notFou</find>
+      <find>=== null</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -112,25 +159,25 @@
         <option value="$PROJECT_DIR$/Utils/Arr.php" />
         <option value="$PROJECT_DIR$/Rules/Required.php" />
         <option value="$PROJECT_DIR$/Rules/Enum.php" />
-        <option value="$PROJECT_DIR$/Rules/RequiredIf.php" />
         <option value="$PROJECT_DIR$/Rules/Rule.php" />
         <option value="$PROJECT_DIR$/Rules/CreditCardNumber.php" />
         <option value="$PROJECT_DIR$/playground.php" />
         <option value="$PROJECT_DIR$/Utils/CreditCard.php" />
-        <option value="$PROJECT_DIR$/Rules/Date.php" />
-        <option value="$PROJECT_DIR$/Rules/ExpiredDate.php" />
         <option value="$PROJECT_DIR$/Controllers/PaymentController.php" />
         <option value="$PROJECT_DIR$/Middleware/Middleware.php" />
         <option value="$PROJECT_DIR$/Middleware/IMiddleware.php" />
         <option value="$PROJECT_DIR$/Exceptions/Unauthorized.php" />
-        <option value="$PROJECT_DIR$/App.php" />
-        <option value="$PROJECT_DIR$/Middleware/Authenticate.php" />
-        <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/Utils/JWT.php" />
         <option value="$PROJECT_DIR$/Requests/PaymentValidationRequest.php" />
-        <option value="$PROJECT_DIR$/Rules/Email.php" />
-        <option value="$PROJECT_DIR$/Rules/Regex.php" />
         <option value="$PROJECT_DIR$/Requests/BaseRequest.php" />
+        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/App.php" />
+        <option value="$PROJECT_DIR$/Rules/RequiredIf.php" />
+        <option value="$PROJECT_DIR$/Rules/ExpiredDate.php" />
+        <option value="$PROJECT_DIR$/Rules/Date.php" />
+        <option value="$PROJECT_DIR$/Rules/Regex.php" />
+        <option value="$PROJECT_DIR$/Rules/Email.php" />
+        <option value="$PROJECT_DIR$/Middleware/Authenticate.php" />
       </list>
     </option>
   </component>
@@ -160,16 +207,6 @@
             <path>
               <item name="mvc" type="b2602c69:ProjectViewProjectNode" />
               <item name="mvc" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mvc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mvc" type="462c0819:PsiDirectoryNode" />
-              <item name="Requests" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mvc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mvc" type="462c0819:PsiDirectoryNode" />
-              <item name="Rules" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -237,7 +274,7 @@
       <workItem from="1582391645633" duration="736000" />
       <workItem from="1582393822914" duration="2230000" />
       <workItem from="1582429643618" duration="222000" />
-      <workItem from="1582429923865" duration="29761000" />
+      <workItem from="1582429923865" duration="30271000" />
     </task>
     <task id="LOCAL-00001" summary="create DI">
       <created>1582356491354</created>
@@ -302,17 +339,31 @@
       <option name="project" value="LOCAL" />
       <updated>1582460849647</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="add xml parse">
+      <created>1582473813925</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1582473813925</updated>
+    </task>
+    <task id="LOCAL-00011" summary="fix authenticate">
+      <created>1582473940938</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1582473940938</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="75400000" />
+    <option name="totallyTimeSpent" value="75910000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26091763" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26091763" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Docker" order="0" />
@@ -344,7 +395,9 @@
     <MESSAGE value="fixed expired date" />
     <MESSAGE value="add authentication" />
     <MESSAGE value="refactor code" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor code" />
+    <MESSAGE value="add xml parse" />
+    <MESSAGE value="fix authenticate" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix authenticate" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
@@ -397,13 +450,6 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/controllers/new/Hay.php" />
-    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/standard_5.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="150" column="9" selection-start-line="150" selection-start-column="9" selection-end-line="150" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/standard_4.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="177">
@@ -522,13 +568,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Rules/RequiredIf.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="672">
-          <caret line="37" column="68" selection-start-line="37" selection-start-column="68" selection-end-line="37" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/Core/Core_d.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
@@ -588,20 +627,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Rules/Date.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="730">
-          <caret line="61" column="5" selection-start-line="61" selection-start-column="5" selection-end-line="61" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Rules/ExpiredDate.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="583">
-          <caret line="36" selection-start-line="36" selection-end-line="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Exceptions/HttpException.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
@@ -657,38 +682,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="19" column="31" lean-forward="true" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Exceptions/Unauthorized.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
           <caret line="16" column="27" lean-forward="true" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/App.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="987">
-          <caret line="52" column="56" lean-forward="true" selection-start-line="52" selection-start-column="56" selection-end-line="52" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Rules/Email.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Rules/Regex.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="23" column="8" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
         </state>
       </provider>
     </entry>
@@ -706,13 +703,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Middleware/Authenticate.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="23" column="22" lean-forward="true" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Utils/JWT.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="37">
@@ -722,11 +712,77 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Requests/BaseRequest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
+        <state relative-caret-position="1473">
           <caret line="83" column="39" selection-start-line="83" selection-start-column="39" selection-end-line="83" selection-end-column="39" />
           <folding>
             <element signature="e#109#123#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/standard_5.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="150" column="9" selection-start-line="150" selection-start-column="9" selection-end-line="150" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rules/RequiredIf.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="24" column="36" selection-start-line="24" selection-start-column="36" selection-end-line="24" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rules/ExpiredDate.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="21" column="32" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rules/Date.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="608">
+          <caret line="54" column="36" selection-start-line="54" selection-start-column="36" selection-end-line="54" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rules/Regex.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="20" column="32" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rules/Email.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="19" column="32" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Middleware/Authenticate.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="22" column="26" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
+          <folding>
+            <element signature="e#110#138#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="987">
+          <caret line="52" column="59" lean-forward="true" selection-start-line="52" selection-start-column="59" selection-end-line="52" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="15" column="23" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
         </state>
       </provider>
     </entry>

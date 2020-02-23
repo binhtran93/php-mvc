@@ -22,7 +22,7 @@ class RequiredIf extends Rule
         $targetValue = $this->args[1];
 
         if ($this->data[$targetKey] === $targetValue) {
-            if ($this->value === null || $this->value === '') {
+            if (is_null($this->value) || $this->value === '') {
                 return false;
             }
         }

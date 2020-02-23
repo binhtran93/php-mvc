@@ -39,18 +39,18 @@ class App {
                 }
             }
 
-            if ($foundPatternResolve === null) {
+            if (is_null($foundPatternResolve)) {
                 throw new \Exceptions\NotFound("Route not found");
             }
 
-            $action = $patternResolve['action'] ?? null;
-            if ($action === null) {
+            $action = $foundPatternResolve['action'] ?? null;
+            if (is_null($action)) {
                 throw new \Exceptions\NotFound("Must provide action");
             }
 
             [$controller, $method] = explode('@', $action);
 
-            if ($controller === null && $method === null) {
+            if (is_null($controller )&& is_null($method)) {
                 throw new \Exceptions\NotFound("Route not found");
             }
 
@@ -59,7 +59,7 @@ class App {
             }
 
             // simple for middleware
-            $middlewareList = $patternResolve['middleware'] ?? [];
+            $middlewareList = $foundPatternResolve['middleware'] ?? [];
             $this->executeMiddleware($middlewareList);
 
             // call the action using dependency injection

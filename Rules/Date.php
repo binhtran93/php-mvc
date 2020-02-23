@@ -52,7 +52,7 @@ class Date extends Rule
      */
     public function isValid()
     {
-        if ($this->delimiter === null) {
+        if (is_null($this->delimiter)) {
             return false;
         }
 
