@@ -21,25 +21,50 @@ class App {
     public function boot() {
         try {
             $pathInfo = $_SERVER['PATH_INFO'];
+            $requestMethod = $_SERVER['REQUEST_METHOD'];
 
             $patternRoues = $this->getPatternRoutes($this->routes);
 
             // The first pattern matched will be served
-            [$patternResolved, $parameters] = $this->getRouteAndParameters($patternRoues, $pathInfo);
-            if (is_null($patternResolved)) {
+            [$patternResolves, $parameters] = $this->getRouteAndParameters($patternRoues, $pathInfo);
+            if (is_null($patternResolves)) {
                 throw new \Exceptions\NotFound('Route not found');
             }
 
-            // Assume developer config correct route with `Controller@Action`
-            [$controller, $action] = explode('@', $patternResolved);
-
-            if (!class_exists($controller)) {
-                throw new \Exception("Controller not found");
+            $foundPatternResolve = null;
+            foreach ($patternResolves as $resolvedRequestMethod => $patternResolve) {
+                if ($requestMethod === strtoupper($resolvedRequestMethod)) {
+                    $foundPatternResolve = $patternResolve;
+                    break;
+                }
             }
+
+            if ($foundPatternResolve === null) {
+                throw new \Exceptions\NotFound("Route not found");
+            }
+
+            $action = $patternResolve['action'] ?? null;
+            if ($action === null) {
+                throw new \Exceptions\NotFound("Must provide action");
+            }
+
+            [$controller, $method] = explode('@', $action);
+
+            if ($controller === null && $method === null) {
+                throw new \Exceptions\NotFound("Route not found");
+            }
+
+            if (!class_exists($controller) || !method_exists($controller, $method)) {
+                throw new \Exceptions\NotFound("Controller or method not found");
+            }
+
+            // simple for middleware
+            $middlewareList = $patternResolve['middleware'] ?? [];
+            $this->executeMiddleware($middlewareList);
 
             // call the action using dependency injection
             $di = new DI();
-            $di->call($controller, $action, [], $parameters);
+            $di->call($controller, $method, [], $parameters);
 
         } catch (Throwable $t) {
             if (is_subclass_of($t, Exceptions\HttpException::class)){
@@ -76,14 +101,30 @@ class App {
      * @return array
      */
     private function getRouteAndParameters($patternRoues, $pathInfo) {
-        foreach ($patternRoues as $patternRoute => $patternResolved) {
+        foreach ($patternRoues as $patternRoute => $patternResolves) {
             $isMatch = preg_match($patternRoute, $pathInfo, $matches);
             if ($isMatch) {
                 $parameters = array_slice($matches, 1);
-                return [$patternResolved, $parameters];
+                return [$patternResolves, $parameters];
             }
         }
 
         return [null, []];
+    }
+
+    /**
+     * Simple middleware
+     * @param $middlewareList
+     */
+    private function executeMiddleware($middlewareList) {
+        foreach ($middlewareList as $middlewareClass) {
+            /** @var \Middleware\IMiddleware $middleware */
+            $middleware = new $middlewareClass();
+            $tryToNext = $middleware->tryToNext();
+            if (!$tryToNext) {
+                $middleware->handle();
+                die();
+            }
+        }
     }
 }

@@ -8,10 +8,19 @@
 require "autoload.php";
 require "DI.php";
 
+define('SECRET', "secret"); // for simple mvc
+
 $app = new App();
 
 $app->setRoutes([
-    '/payments/validate' => 'Controllers\PaymentController@validate',
+    '/payments/validate' => [
+        'post' => [
+            'action' => 'Controllers\PaymentController@validate',
+            'middleware' => [
+                \Middleware\Authenticate::class
+            ]
+        ]
+    ],
 ]);
 
 $app->boot();
