@@ -11,7 +11,7 @@ namespace Utils;
 
 use DateTime;
 
-class JWT {
+class AuthenticatonHelper {
 
     /**
      * @param $key
@@ -22,7 +22,6 @@ class JWT {
      */
     public static function generate($key, $secret, $payload=[]) {
         $now = new DateTime();
-
         $payloadJson = json_encode($payload);
 
         $encodedKey = self::base64UrlEncode($key);
@@ -41,15 +40,14 @@ class JWT {
      * @return bool
      */
     public static function verify($token, $secret) {
-        // split the token
-        $parts   = explode('.', $token);
-        $key  = base64_decode($parts[0]);
+        $parts = explode('.', $token);
+
+        $key = base64_decode($parts[0]);
         $payload = base64_decode($parts[1]);
         $timestamp = base64_decode($parts[2]);
 
         $signatureProvided = $parts[3];
 
-        // build a signature based on the header and payload using the secret
         $encodedKey = self::base64UrlEncode($key);
         $encodedPayload = self::base64UrlEncode($payload);
         $encodedTimestamp = self::base64UrlEncode($timestamp);

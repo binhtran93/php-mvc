@@ -12,6 +12,7 @@ namespace Requests;
 use Models\Payment;
 
 class PaymentValidationRequest extends BaseRequest {
+
     public function rules() {
         return [
             'type' => [
@@ -20,7 +21,7 @@ class PaymentValidationRequest extends BaseRequest {
             ],
             'credit_card_number' => [
                 'Rules\RequiredIf' => ['type', Payment::TYPE_CREDIT_CARD],
-                'Rules\CreditCardNumber' => true
+                'Rules\CreditCardNumber' => null
             ],
             'name' => [
                 'Rules\RequiredIf' => ['type', Payment::TYPE_CREDIT_CARD],
@@ -35,7 +36,7 @@ class PaymentValidationRequest extends BaseRequest {
             ],
             'email' => [
                 'Rules\RequiredIf' => ['type', Payment::TYPE_CREDIT_CARD],
-                'Rules\Email' => true
+                'Rules\Email' => null
             ],
             'phone_number' => [
                 'Rules\RequiredIf' => ['type', Payment::TYPE_MOBILE],

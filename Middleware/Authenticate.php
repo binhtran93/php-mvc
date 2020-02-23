@@ -8,7 +8,7 @@
 namespace Middleware;
 
 use Exceptions\Unauthorized;
-use Utils\JWT;
+use Utils\AuthenticatonHelper;
 
 class Authenticate implements IMiddleware {
 
@@ -26,7 +26,7 @@ class Authenticate implements IMiddleware {
 
         $secret = get_defined_constants()['SECRET'];
         // sample for valid token cHVibGlj.W10.MTU4MjQ2MDU4MQ.3X4WqamhJu4R_Mjyzn-rwnmiNPilM7h1lR5DagBSEBM
-        return JWT::verify($token, $secret);
+        return AuthenticatonHelper::verify($token, $secret);
     }
 
     /**

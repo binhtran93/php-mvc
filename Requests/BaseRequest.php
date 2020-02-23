@@ -111,9 +111,13 @@ abstract class BaseRequest implements IRequest
      */
     private function parseXml() {
         try {
-            $xml = simplexml_load_string(file_get_contents('php://input'), "SimpleXMLElement", LIBXML_NOCDATA);
+            $xml = simplexml_load_string(
+                file_get_contents('php://input'),
+                "SimpleXMLElement",
+                LIBXML_NOCDATA
+            );
             $json = json_encode($xml);
-            $data = json_decode($json,TRUE);
+            $data = json_decode($json,true);
         } catch (\Throwable $t) {
             $data = [];
         }

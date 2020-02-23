@@ -15,6 +15,7 @@ class PaymentController extends Controller {
 
     /** @var Payment $payment */
     private $payment;
+
     /**
      * PaymentController constructor.
      * @param Payment $payment
@@ -23,6 +24,8 @@ class PaymentController extends Controller {
     public function __construct(Payment $payment)
     {
         parent::__construct();
+
+        // inject model but does not do anything here, just sample for MVC
         $this->payment = $payment;
     }
 

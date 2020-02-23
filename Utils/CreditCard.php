@@ -21,6 +21,10 @@ class CreditCard
         $length = strlen($number);
         $count = 0;
         for ($index = 0; $index < $length; $index++) {
+            if (!is_numeric($number[$index])) {
+                return false;
+            }
+
             $digit = (int) $number[$index];
             if ($index % 2 !== 0) {
                 $count += $digit;

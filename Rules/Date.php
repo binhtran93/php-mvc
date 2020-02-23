@@ -27,9 +27,10 @@ class Date extends Rule
     public function __construct($key, $value, $data, ...$args)
     {
         parent::__construct($key, $value, $data, $args);
-        if (strpos($this->value, '-') !== false) {
+
+        if (strpos($this->value, self::HYPHEN) !== false) {
             $this->delimiter = self::HYPHEN;
-        } else if (strpos($this->value, '/') !== false) {
+        } else if (strpos($this->value, self::SLASH) !== false) {
             $this->delimiter = self::SLASH;
         } else {
             $this->delimiter = null;
