@@ -69,9 +69,3 @@ class JWT {
         return str_replace(['+', '/', '='], ['-', '_', ''], base64_encode($text));
     }
 }
-
-//$jwt = new JWT();
-//$token = $jwt->generate('public', 'secret');
-//
-//echo $token;
-//var_dump($jwt->verify($token));

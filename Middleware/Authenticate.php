@@ -7,7 +7,6 @@
  */
 namespace Middleware;
 
-use Exceptions\NotFound;
 use Exceptions\Unauthorized;
 use Utils\JWT;
 
