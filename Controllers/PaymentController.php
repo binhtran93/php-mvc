@@ -30,8 +30,6 @@ class PaymentController extends Controller {
      * @throws \Exception
      */
     public function validate(PaymentValidationRequest $request) {
-        $data = $request->all();
-
         $errors = $request->validate();
 
         echo $this->response->from([

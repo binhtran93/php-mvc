@@ -11,6 +11,8 @@ use DateTime;
 
 class ExpiredDate extends Date
 {
+    private $message;
+
     /**
      * @return boolean
      * @throws \Exception
@@ -23,14 +25,23 @@ class ExpiredDate extends Date
 
         $isValid = parent::isValid();
         if (!$isValid) {
+            $this->message = "$this->key is not valid";
             return false;
         }
 
-        $date = $this->getDateTimeInstance();
-        $date->setTime(00, 00, 00);
+        $expiredDate = new DateTime();
+        [$month, $year] = $this->getMonthYear();
+        $expiredDate->setDate($year, $month, 1);
+        $expiredDate->setTime(00, 00, 00);
+
         $now = new DateTime();
 
-        return $date->getTimestamp() >= $now->getTimestamp();
+        $isExpired = $expiredDate->getTimestamp() <= $now->getTimestamp();
+        if ($isExpired) {
+            $this->message = "$this->key is expired";
+        }
+
+        return !$isExpired;
     }
 
     /**
@@ -38,6 +49,6 @@ class ExpiredDate extends Date
      */
     public function message()
     {
-        return "$this->key is expired";
+        return $this->message;
     }
 }

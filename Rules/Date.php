@@ -28,9 +28,9 @@ class Date extends Rule
     {
         parent::__construct($key, $value, $data, $args);
         if (strpos($this->value, '-') !== false) {
-            $this->delimiter = '-';
+            $this->delimiter = self::HYPHEN;
         } else if (strpos($this->value, '/') !== false) {
-            $this->delimiter = '/';
+            $this->delimiter = self::SLASH;
         } else {
             $this->delimiter = null;
         }
@@ -48,7 +48,6 @@ class Date extends Rule
     /**
      * Only accept m/Y, m-Y
      *
-     * @param array $args
      * @return boolean
      */
     public function isValid()
@@ -60,13 +59,5 @@ class Date extends Rule
         [$month, $year] = $this->getMonthYear();
 
         return checkdate($month, 1, $year);
-    }
-
-    /**
-     * @return bool|\DateTime
-     * @throws \Exception
-     */
-    public function getDateTimeInstance() {
-        return \DateTime::createFromFormat("m{$this->delimiter}Y", $this->value);
     }
 }
