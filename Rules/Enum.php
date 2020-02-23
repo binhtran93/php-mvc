@@ -8,17 +8,18 @@
 
 namespace Rules;
 
-class Required extends Rule {
+class Enum extends Rule {
     /**
      * @return boolean
      */
     function isValid()
     {
-        return $this->value !== '' && $this->value !== null;
+        $values = $this->args;
+        return in_array($this->value, $values);
     }
 
     function message()
     {
-        return "$this->key is required";
+        return "$this->key is must be one of values " . implode(', ', $this->args);
     }
 }

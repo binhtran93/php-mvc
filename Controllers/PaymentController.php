@@ -1,6 +1,7 @@
 <?php
 namespace Controllers;
 
+use Models\Payment;
 use Requests\PaymentValidationRequest;
 
 /**
@@ -10,26 +11,32 @@ use Requests\PaymentValidationRequest;
  * Time: 23:30
  */
 
-class PaymentController extends Controller
-{
+class PaymentController extends Controller {
+    /** @var Payment $payment */
+    private $payment;
     /**
      * PaymentController constructor.
+     * @param Payment $payment
      * @throws \Exception
      */
-    public function __construct()
+    public function __construct(Payment $payment)
     {
         parent::__construct();
+        $this->payment = $payment;
     }
 
+    /**
+     * @param PaymentValidationRequest $request
+     * @throws \Exception
+     */
     public function validate(PaymentValidationRequest $request) {
         $data = $request->all();
 
         $errors = $request->validate();
-        if (count($errors) > 0) {
-            echo $this->response->toJson($errors, 400);
-            die();
-        }
 
-        echo $this->response->from($data);
+        echo $this->response->from([
+            'valid'  => !count($errors),
+            'errors' => $errors
+        ]);
     }
 }

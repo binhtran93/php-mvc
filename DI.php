@@ -79,7 +79,7 @@ class DI
             return $reflector->newInstance();
         }
 
-        $dependencies = $this->resolveParameters($parameters);
+        $dependencies = $this->resolveParameters($parameters, $constructParams);
 
         return $reflector->newInstanceArgs($dependencies);
     }

@@ -1,0 +1,72 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: binh
+ * Date: 23/02/2020
+ * Time: 12:18
+ */
+
+namespace Rules;
+
+class Date extends Rule
+{
+    const SLASH = '/';
+    const HYPHEN = '-';
+    const CONVERTED_FORMAT = 'm/Y';
+
+    /** @var string $delimiter */
+    private $delimiter;
+
+    /**
+     * Date constructor.
+     * @param $key
+     * @param $value
+     * @param $data
+     * @param array $args
+     */
+    public function __construct($key, $value, $data, ...$args)
+    {
+        parent::__construct($key, $value, $data, $args);
+        if (strpos($this->value, '-') !== false) {
+            $this->delimiter = '-';
+        } else if (strpos($this->value, '/') !== false) {
+            $this->delimiter = '/';
+        } else {
+            $this->delimiter = null;
+        }
+    }
+
+    /**
+     * @return array
+     */
+    protected function getMonthYear() {
+        return $this->delimiter === self::SLASH
+            ? explode(self::SLASH, $this->value)
+            : explode(self::HYPHEN, $this->value);
+    }
+
+    /**
+     * Only accept m/Y, m-Y
+     *
+     * @param array $args
+     * @return boolean
+     */
+    public function isValid()
+    {
+        if ($this->delimiter === null) {
+            return false;
+        }
+
+        [$month, $year] = $this->getMonthYear();
+
+        return checkdate($month, 1, $year);
+    }
+
+    /**
+     * @return bool|\DateTime
+     * @throws \Exception
+     */
+    public function getDateTimeInstance() {
+        return \DateTime::createFromFormat("m{$this->delimiter}Y", $this->value);
+    }
+}

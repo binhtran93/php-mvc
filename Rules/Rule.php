@@ -16,25 +16,37 @@ abstract class Rule
     /** @var String $value */
     protected $value;
 
+    /** @var array $data */
+    protected $data;
+
+    /** @var array $args */
+    protected $args;
+
     /**
      * Rule constructor.
      * @param $key
      * @param $value
+     * @param $data
+     * @param array $args
      */
-    public function __construct($key, $value)
+    public function __construct($key, $value, $data, ...$args)
     {
         $this->key = $key;
         $this->value = $value;
+        $this->data = $data;
+        $this->args = $args;
     }
 
     /**
      * @param array $args
      * @return boolean
      */
-    abstract function isValid();
+    public abstract function isValid();
 
     /**
      * @return string
      */
-    abstract function message();
+    function message() {
+        return "$this->key is not valid";
+    }
 }

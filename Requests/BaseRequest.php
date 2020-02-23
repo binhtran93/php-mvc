@@ -45,21 +45,20 @@ abstract class BaseRequest implements IRequest
 
     /**
      * @return array
+     * @throws Exception
      */
     public function validate() {
         $errors = [];
         $data = $this->all();
-        $validations = $this->rules() ?? [];
+        $keyWithRules = $this->rules() ?? [];
 
-        foreach ($data as $key => $value) {
-            if (!array_key_exists($key, $validations)) {
-                continue;
-            }
+        foreach ($keyWithRules as $key => $rules) {
+            $value = $data[$key] ?? null;
 
-            $rules = $validations[$key];
-            foreach ($rules as $rule) {
+            foreach ($rules as $rule => $params) {
+                $params = $params ?? [];
                 /** @var Rule $ruleInstance */
-                $ruleInstance = new $rule($key, $value);
+                $ruleInstance = new $rule($key, $value, $data, ...$params);
                 $isValid = $ruleInstance->isValid();
                 if (!$isValid) {
                     $errors[$key][] = $ruleInstance->message();

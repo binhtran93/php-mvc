@@ -6,8 +6,7 @@
  * Time: 16:25
  */
 
-class App
-{
+class App {
     private $routes = [];
 
     /**
@@ -47,6 +46,7 @@ class App
                 /** @var Exceptions\HttpException $t */
                 $t->output();
             } else {
+                syslog(LOG_ERR, $t);
                 echo 'Server error';
             }
             die();
