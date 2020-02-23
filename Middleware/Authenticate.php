@@ -18,7 +18,12 @@ class Authenticate implements IMiddleware {
     function tryToNext() {
         $authorization = $_SERVER['HTTP_AUTHORIZATION'];
         preg_match('/Bearer\s(\S+)/', $authorization, $matches);
-        $token = $matches[1];
+
+        $token = $matches[1] ?? null;
+        if ($token === null) {
+            return false;
+        }
+
         $secret = get_defined_constants()['SECRET'];
         // sample for valid token cHVibGlj.W10.MTU4MjQ2MDU4MQ.3X4WqamhJu4R_Mjyzn-rwnmiNPilM7h1lR5DagBSEBM
         return JWT::verify($token, $secret);
