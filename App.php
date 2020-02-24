@@ -26,7 +26,7 @@ class App {
             $patternRoues = $this->getPatternRoutes($this->routes);
 
             // The first pattern matched will be served
-            [$patternResolves, $parameters] = $this->getRouteAndParameters($patternRoues, $pathInfo);
+            [$patternResolves, $parameters] = $this->getPatternResolvesAndParameters($patternRoues, $pathInfo);
             if (is_null($patternResolves)) {
                 throw new \Exceptions\NotFound('Route not found');
             }
@@ -100,7 +100,7 @@ class App {
      * @param $pathInfo
      * @return array
      */
-    private function getRouteAndParameters($patternRoues, $pathInfo) {
+    private function getPatternResolvesAndParameters($patternRoues, $pathInfo) {
         foreach ($patternRoues as $patternRoute => $patternResolves) {
             $isMatch = preg_match($patternRoute, $pathInfo, $matches);
             if ($isMatch) {
